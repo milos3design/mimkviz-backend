@@ -2,6 +2,7 @@
 *.sqlite3
 *.db
 
+
 # Ignore static files directory (for collectstatic)
 /staticfiles/
 
@@ -9,7 +10,7 @@
 /media/
 
 # Ignore virtual environment
-venv/
+env/
 .env
 
 # Ignore compiled Python files
