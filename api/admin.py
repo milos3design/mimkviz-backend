@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import Question
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question', 'difficulty', 'correct_answer']
+    list_display = ['id', 'question', 'difficulty', 'correct_answer']
     list_filter = ['difficulty']
     search_fields = ['question', 'correct_answer']
     fieldsets = [
