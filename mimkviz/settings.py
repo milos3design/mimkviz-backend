@@ -62,7 +62,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
     'http://127.0.0.1',
-    'www.mimkviz.com',
+    'https://www.mimkviz.com',
 ]
 
 
@@ -149,7 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = '/home/mimkviz/static/'
+STATIC_ROOT = '/home/milos3design-mimkvizapi/htdocs/mimkvizapi.milos3design.com/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
