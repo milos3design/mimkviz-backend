@@ -149,7 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = '/home/milos3design-mimkvizapi/htdocs/mimkvizapi.milos3design.com/static'
+STATIC_ROOT = '/home/milos3design-mimkvizapi/htdocs/mimkvizapi.milos3design.com/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
