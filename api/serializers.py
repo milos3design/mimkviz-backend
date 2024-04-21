@@ -1,19 +1,27 @@
 from rest_framework import serializers
 from .models import Question
-from cryptography.fernet import Fernet
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+import base64
 import os
 
-cipher_suite = Fernet(os.getenv("FERNET_KEY"))
+AES_KEY = os.getenv("AES_KEY")
+
+FIXED_IV = os.getenv("IV_KEY").encode('utf-8')
+
+def encrypt_value(value: str) -> bytes:
+    # Convert the input value to bytes and pad it
+    padded_value = pad(value.encode('utf-8'), 16)
+    cipher = AES.new(AES_KEY.encode('utf-8'), AES.MODE_CBC, iv=FIXED_IV)
+
+    return base64.b64encode(cipher.encrypt(padded_value))
 
 class QuestionSerializer(serializers.ModelSerializer):
-    correct_answer = serializers.SerializerMethodField()
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['correct_answer'] = encrypt_value(instance.correct_answer)
+        return data
 
-    def get_correct_answer(self, obj):
-        if obj.correct_answer:
-            # Encrypt correct answer
-            return cipher_suite.encrypt(obj.correct_answer.encode()).decode()
-        return None
-    
     class Meta:
         model = Question
         fields = ['id', 'question', 'difficulty', 'possible_answers', 'correct_answer', 'url']
