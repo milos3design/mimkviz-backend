@@ -15,7 +15,7 @@ class QuestionAPITest(TestCase):
         for i in range(4):
             Question.objects.create(
                 question=f"Question {i+1}",
-                difficulty='less' if i < 2 else 'more',
+                difficulty='less' if i < 5 else 'more',
                 possible_answers=["Option A", "Option B", "Option C", "Option D"],
                 correct_answer="Option A",
                 url="example",
@@ -28,7 +28,7 @@ class QuestionAPITest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Assert that 4 questions are returned
-        self.assertEqual(len(response.data), 4)
+        self.assertEqual(len(response.data), 10)
 
         # Assert that each question has the required fields
         for question in response.data:

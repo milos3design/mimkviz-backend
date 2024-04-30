@@ -8,7 +8,7 @@ import os
 AES_KEY = os.getenv("AES_KEY")
 
 FIXED_IV = os.getenv("IV_KEY").encode('utf-8')
-
+print(FIXED_IV)
 def encrypt_value(value: str) -> bytes:
     # Convert the input value to bytes and pad it
     padded_value = pad(value.encode('utf-8'), 16)
