@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from rest_framework.response import Response
+
 from rest_framework import generics
 from .models import Question, Leaderboard
 from .serializers import QuestionSerializer, LeaderboardSerializer
@@ -37,5 +38,6 @@ class LeaderboardAPIView(generics.ListCreateAPIView):
             if leaderboard.count() == 10:
                 leaderboard.last().delete()
             Leaderboard.objects.create(name=name, points=points, time=time)
-
-        return super().post(request, *args, **kwargs)
+            return Response(status=201)  # Return a successful response
+        else:
+            return Response(status=400)  # Return a bad request response
