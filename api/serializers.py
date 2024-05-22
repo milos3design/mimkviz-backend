@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Question
+from .models import Question, Leaderboard
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 import base64
@@ -25,3 +25,9 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ['id', 'question', 'difficulty', 'possible_answers', 'correct_answer', 'url']
+
+
+class LeaderboardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Leaderboard
+        fields = ['id', 'name', 'points', 'time']

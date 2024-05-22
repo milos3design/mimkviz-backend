@@ -13,3 +13,15 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question
+    
+
+class Leaderboard(models.Model):
+    name = models.CharField(max_length=255)
+    points = models.IntegerField()
+    time = models.FloatField()
+
+    class Meta:
+        ordering = ['-points', 'time']  # Order by points descending, then by time ascending
+
+    def __str__(self):
+        return f'{self.name} - {self.points} points in {self.time} seconds'
