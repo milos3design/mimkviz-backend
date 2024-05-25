@@ -14,9 +14,9 @@ admin.site.register(Question, QuestionAdmin)
 
 
 class LeaderboardAdmin(admin.ModelAdmin):
-    list_display = ['name', 'points', 'time']
+    list_display = ['id', 'name', 'points', 'time', 'created_at']
     search_fields = ['name']
-    list_filter = ['points']
-    ordering = ['-points', 'time']
+    ordering = ('-points', 'time', '-created_at')
+
 
 admin.site.register(Leaderboard, LeaderboardAdmin)

@@ -16,12 +16,10 @@ class Question(models.Model):
     
 
 class Leaderboard(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=16)
     points = models.IntegerField()
-    time = models.FloatField()
-
-    class Meta:
-        ordering = ['-points', 'time']  # Order by points descending, then by time ascending
+    time = models.DecimalField(max_digits=4, decimal_places=1)
+    created_at = models.DateTimeField(auto_now_add=True)  # New field
 
     def __str__(self):
-        return f'{self.name} - {self.points} points in {self.time} seconds'
+        return f"{self.name} - {self.points} points - {self.time} seconds - Created at: {self.created_at}"

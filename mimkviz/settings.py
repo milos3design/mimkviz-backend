@@ -59,12 +59,10 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ORIGIN_WHITELIST = [
+CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'http://127.0.0.1',
     'https://www.mimkviz.com',
 ]
-
 
 ROOT_URLCONF = 'mimkviz.urls'
 
