@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Leaderboard
+from .models import Question, Leaderboard, GameCompletionCounter
 
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ['id', 'question', 'difficulty', 'correct_answer']
@@ -18,5 +18,10 @@ class LeaderboardAdmin(admin.ModelAdmin):
     search_fields = ['name']
     ordering = ('-points', 'time', '-created_at')
 
-
 admin.site.register(Leaderboard, LeaderboardAdmin)
+
+
+class GameCompletionCounterAdmin(admin.ModelAdmin):
+    list_display = ['id', 'count']
+
+admin.site.register(GameCompletionCounter, GameCompletionCounterAdmin)

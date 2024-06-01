@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Question, Leaderboard
+from .models import Question, Leaderboard, GameCompletionCounter
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 import base64
@@ -31,3 +31,9 @@ class LeaderboardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Leaderboard
         fields = ['id', 'name', 'points', 'time']
+
+
+class GameCompletionCounterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GameCompletionCounter
+        fields = ['count']

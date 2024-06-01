@@ -23,3 +23,7 @@ class Leaderboard(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.points} points - {self.time} seconds - Created at: {self.created_at}"
+    
+
+class GameCompletionCounter(models.Model):
+    count = models.IntegerField(default=0)
